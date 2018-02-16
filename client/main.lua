@@ -104,7 +104,8 @@ function Drug(item, start)
     end
 
       SetPedMovementClipset(playerPed, "move_injured_generic", true)
-      SetPlayerMeleeWeaponDefenseModifier (playerPed, 2.0)  
+      SetPlayerMeleeWeaponDefenseModifier (playerPed, 2.0) 
+ 
     elseif item == 'coke' then
       RequestAnimSet("move_m@brave")
     while not HasAnimSetLoaded("mmove_m@brave") do
