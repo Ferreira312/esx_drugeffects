@@ -2,6 +2,9 @@
 
 Modifided version of esx_optionalneeds from @indilo53
 
+[TODO]
+-Instead of using the status valeu it needs to go to each drug. (for this i need to set somehow if item == weed then )
+
 [NOT WORKING YET !!!]
 
 Adds the option to use drugs that adds effects ex. speed, damage reduction, health recharge.
