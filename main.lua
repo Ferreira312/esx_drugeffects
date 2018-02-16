@@ -75,10 +75,9 @@ function Drug(level, start)
 
     local playerPed = GetPlayerPed(-1)
 
-    --if start then
-    --  DoScreenFadeOut(800)
-    --  Wait(1000)
-   -- end
+    if start then
+     Wait(800)
+    end
 
     if item == 'weed' then
       RequestAnimSet("move_p_m_zero_slow") 
@@ -119,11 +118,7 @@ function Drug(level, start)
     SetPedMotionBlur(playerPed, true)
     SetPedIsDrug(playerPed, true)
 
-    --if start then
-     -- DoScreenFadeIn(800)
-    --end
-
-  end)
+    end)
 
 end
 
@@ -134,8 +129,7 @@ function Normal()
 
     local playerPed = GetPlayerPed(-1)
 
-    --DoScreenFadeOut(800)
-    --Wait(1000)
+   Wait(800)
 
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
@@ -143,9 +137,7 @@ function Normal()
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
 
-    --DoScreenFadeIn(800)
-
-  end)
+   end)
 
 end
 
@@ -178,10 +170,3 @@ AddEventHandler('esx_drugseffects:onDrug', function()
   ClearPedTasksImmediately(playerPed)
 
 end)
-
---SetEntityHealth(playerPed, 200)
---SetRunSprintMultiplierForPlayer (playerPed, 1.0)
-      --SetPlayerMeleeWeaponDefenseModifier (playerPed, 2)
-     --SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
-      --SetPlayerWeaponDefenseModifier (playerPed, 40)
-      --ResetPlayerStamina (playerPed)
