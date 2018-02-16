@@ -17,5 +17,6 @@ esx_status https://github.com/FXServer-ESX/fxserver-esx_status
 CD in your resources/[esx] folder
 Clone the repository
 git clone https://github.com/Ferreira312/esx_drugeffects/ esx_drugeffects
+
 Add this in your server.cfg :
 start esx_drugeffects
