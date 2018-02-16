@@ -1,6 +1,6 @@
 # esx_drugeffects
 
-Modifided version of esx_optionalneeds from indilo53
+Modifided version of esx_optionalneeds from @indilo53
 
 [NOT WORKING YET !!!]
 Adds the option to use drugs that adds effects ex. speed, damage reduction, health recharge.
