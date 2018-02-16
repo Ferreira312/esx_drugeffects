@@ -8,15 +8,19 @@ Modifided version of esx_optionalneeds from @indilo53
 
 -Add the effects
 
+
 [NOT WORKING YET !!!]
 
 Adds the option to use drugs that adds effects ex. speed, damage reduction, health recharge.
 This was made so you could buy or sell and have some reason to do it.
 
 
+
 [REQUIREMENTS]
 
 esx_status https://github.com/FXServer-ESX/fxserver-esx_status
+
+
 
 [INSTALLATION]
 
