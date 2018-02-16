@@ -95,6 +95,7 @@ function Drug(item, start)
     end
 
       SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
+      SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
 
     elseif item == 'meth' then
       RequestAnimSet("move_injured_generic")
@@ -103,7 +104,7 @@ function Drug(item, start)
     end
 
       SetPedMovementClipset(playerPed, "move_injured_generic", true)
-	  
+      SetPlayerMeleeWeaponDefenseModifier (playerPed, 2)  
     elseif item == 'coke' then
       RequestAnimSet("move_m@brave")
     while not HasAnimSetLoaded("mmove_m@brave") do
@@ -111,7 +112,7 @@ function Drug(item, start)
     end
 
       SetPedMovementClipset(playerPed, "move_m@brave", true)
-
+      SetPlayerWeaponDefenseModifier (playerPed, 40)
     end
 
     SetTimecycleModifier("spectator5")
