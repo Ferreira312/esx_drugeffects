@@ -40,7 +40,7 @@ Citizen.CreateThread(function()
   
   local level = 0
 
-    if 2800000 > status.val and status.val > 0 then
+    if 1000000 > status.val and status.val > 0 then
         level = 0
     else
         overdose() 
