@@ -87,7 +87,7 @@ function Drug(item, start)
 
       SetPedMovementClipset(playerPed, "move_p_m_zero_slow", true)
       SetRunSprintMultiplierForPlayer (playerPed, 1.2)
-	ESX.ShowNotification('Passed the condition 1')
+	ESX.ShowNotification('Passed the condition weed')
   
     elseif item == 'opium' then
       RequestAnimSet("move_m@drunk@moderatedrunk")
@@ -97,7 +97,7 @@ function Drug(item, start)
 
       SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
       SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
-      ESX.ShowNotification('Passed the condition 2')
+      ESX.ShowNotification('Passed the condition opium')
 
     elseif item == 'meth' then
       RequestAnimSet("move_injured_generic")
@@ -107,7 +107,7 @@ function Drug(item, start)
 
       SetPedMovementClipset(playerPed, "move_injured_generic", true)
       SetPlayerMeleeWeaponDefenseModifier (playerPed, 2.0) 
-      ESX.ShowNotification('Passed the condition 3')
+      ESX.ShowNotification('Passed the condition meth')
 
     elseif item == 'coke' then
       RequestAnimSet("move_m@brave")
@@ -117,7 +117,7 @@ function Drug(item, start)
 
       SetPedMovementClipset(playerPed, "move_m@brave", true)
       SetPlayerWeaponDefenseModifier (playerPed, 40)
-      ESX.ShowNotification('Passed the condition 4')
+      ESX.ShowNotification('Passed the condition coke')
     end
 
     SetTimecycleModifier("spectator5")
