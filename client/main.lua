@@ -47,7 +47,7 @@ Citizen.CreateThread(function()
     end
 
   if level ~= DrugLevel then
-       Drug(level, start)
+       Drug(item, start)
   end
 
   IsOnDrug = true
@@ -69,7 +69,7 @@ end)
 end)
 
 --Adds a diffrent Anim & efect to each drug
-function Drug(level, start)
+function Drug(item, start)
   
   Citizen.CreateThread(function()
 
