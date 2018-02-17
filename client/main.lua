@@ -40,10 +40,16 @@ Citizen.CreateThread(function()
   
   local level = 0
 
-    if 1000000 > status.val and status.val > 0 then
-        level = 0
-    else
-        overdose() 
+    if 12000 < stauts.val and status.val < 360000 then
+            level = 0
+          elseif 36000 < stauts.val and status.val < 110000 then
+            level = 1
+          elseif 110000 < stauts.val and status.val < 330000 then
+            level = 2
+		  elseif 330000 < stauts.val and status.val < 1000000 then
+            level = 3
+		 else
+		  overdose() 
     end
 
   if level ~= DrugLevel then
@@ -79,7 +85,7 @@ function Drug(item, start)
      Wait(800)
     end
 
-    if item == 'weed' then
+    if level == 0 then
       RequestAnimSet("move_p_m_zero_slow") 
     while not HasAnimSetLoaded("move_p_m_zero_slow") do
       Citizen.Wait(0)
@@ -89,7 +95,7 @@ function Drug(item, start)
       SetRunSprintMultiplierForPlayer (playerPed, 1.2)
 	ESX.ShowNotification('Passed the condition weed')
   
-    elseif item == 'opium' then
+    elseif level == 1 then
       RequestAnimSet("move_m@drunk@moderatedrunk")
     while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
       Citizen.Wait(0)
@@ -99,7 +105,7 @@ function Drug(item, start)
       SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
       ESX.ShowNotification('Passed the condition opium')
 
-    elseif item == 'meth' then
+    elseif level == 2 then
       RequestAnimSet("move_injured_generic")
     while not HasAnimSetLoaded("move_injured_generic") do
       Citizen.Wait(0)
@@ -109,7 +115,7 @@ function Drug(item, start)
       SetPlayerMeleeWeaponDefenseModifier (playerPed, 2.0) 
       ESX.ShowNotification('Passed the condition meth')
 
-    elseif item == 'coke' then
+    elseif level == 3 then
       RequestAnimSet("move_m@brave")
     while not HasAnimSetLoaded("mmove_m@brave") do
       Citizen.Wait(0)
@@ -142,7 +148,8 @@ function Normal()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-
+	
+    
    end)
 
 end
@@ -161,8 +168,9 @@ Citizen.CreateThread(function()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-    status.val = 0
 	
+	status.remove(status.val)
+    	
    end)
 end
 
