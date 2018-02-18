@@ -197,3 +197,4 @@ end)
      --SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
       --SetPlayerWeaponDefenseModifier (playerPed, 40)
       --ResetPlayerStamina (playerPed)
+--data.current.value == 'opium'
