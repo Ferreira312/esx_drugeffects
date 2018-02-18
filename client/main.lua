@@ -41,41 +41,46 @@ Citizen.CreateThread(function()
   local level = 0
 
     if 12000 < stauts.val and status.val < 360000 then
-            level = 0
-          elseif 36000 < stauts.val and status.val < 110000 then
-            level = 1
-          elseif 110000 < stauts.val and status.val < 330000 then
-            level = 2
-		  elseif 330000 < stauts.val and status.val < 1000000 then
-            level = 3
-		 else
-		  overdose() 
+     level = 0
+    elseif 36000 < stauts.val and status.val < 110000 then
+     level = 1
+    elseif 110000 < stauts.val and status.val < 330000 then
+     level = 2
+	elseif 330000 < stauts.val and status.val < 1000000 then
+     level = 3
+	else
+	 overdose() 
     end
 
   if level ~= DrugLevel then
-       Drug(item, start)
+       Drug(level, start)
   end
 
-  IsOnDrug = true
-       DrugLevel = level
-  end
+            IsOnDrug = true
+          DrugLevel     = level
+				end
 
-  if status.val == 0 then
-     if IsOnDrug then
-        Normal()
-     end
+				if status.val == 0 then
+          
+          if IsOnDrug then
+            Normal()
+          end
 
-     IsOnDrug = false
-        DrugLevel = -1
-  end
-end)
+          IsOnDrug = false
+          DrugLevel     = -1
 
-     end
-   end)
+				end
+
+			end)
+
+		end
+
+	end)
+
 end)
 
 --Adds a diffrent Anim & efect to each drug
-function Drug(item, start)
+function Drug(level, start)
   
   Citizen.CreateThread(function()
 
@@ -184,3 +189,11 @@ AddEventHandler('esx_drugseffects:onDrug', function()
   ClearPedTasksImmediately(playerPed)
 
 end)
+
+
+--SetEntityHealth(playerPed, 200)
+--SetRunSprintMultiplierForPlayer (playerPed, 1.0)
+      --SetPlayerMeleeWeaponDefenseModifier (playerPed, 2)
+     --SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
+      --SetPlayerWeaponDefenseModifier (playerPed, 40)
+      --ResetPlayerStamina (playerPed)
