@@ -1,6 +1,6 @@
-ESX = nil
-local IsOnDrug = false
-local DrugLevel = -1
+ESX                  = nil
+local IsAlreadyDrug = false
+local DrugLevel     = -1
 
 Citizen.CreateThread(function()
   while ESX == nil do
@@ -9,10 +9,9 @@ Citizen.CreateThread(function()
   end
 end)
 
--- Add valeus to the esx_status
 AddEventHandler('esx_status:loaded', function(status)
 
-  TriggerEvent('esx_status:registerStatus', 'drug', 0, '#b139e5', 
+  TriggerEvent('esx_status:registerStatus', 'drug', 0, '#8F15A5', 
     function(status)
       if status.val > 0 then
         return true
@@ -25,48 +24,44 @@ AddEventHandler('esx_status:loaded', function(status)
     end
   )
 
---Control how much drugs is taking
-Citizen.CreateThread(function()
-  while true do
-      Wait(1000)
-      TriggerEvent('esx_status:getStatus', 'drug', function(status)
-  
-  if status.val > 0 then
-      local start = true
+	Citizen.CreateThread(function()
 
-      if IsOnDrug then
-         start = false
-      end
-  
-  local level = 0
+		while true do
 
-    if 12000 < stauts.val and status.val < 360000 then
-     level = 0
-    elseif 36000 < stauts.val and status.val < 110000 then
-     level = 1
-    elseif 110000 < stauts.val and status.val < 330000 then
-     level = 2
-	elseif 330000 < stauts.val and status.val < 1000000 then
-     level = 3
-	else
-	 overdose() 
-    end
+			Wait(1000)
 
-  if level ~= DrugLevel then
-       Drug(level, start)
-  end
+			TriggerEvent('esx_status:getStatus', 'drug', function(status)
+				
+				if status.val > 0 then
+					
+          local start = true
 
-            IsOnDrug = true
+          if IsAlreadyDrug then
+            start = false
+          end
+
+          local level = 0
+
+          if status.val <= 1000000 then
+            level = 0
+          else
+            overdose()
+          end
+
+          if level ~= DrugLevel then
+          end
+
+          IsAlreadyDrug = true
           DrugLevel     = level
 				end
 
 				if status.val == 0 then
           
-          if IsOnDrug then
+          if IsAlreadyDrug then
             Normal()
           end
 
-          IsOnDrug = false
+          IsAlreadyDrug = false
           DrugLevel     = -1
 
 				end
@@ -79,65 +74,106 @@ Citizen.CreateThread(function()
 
 end)
 
---Adds a diffrent Anim & efect to each drug
-function Drug(level, start)
+RegisterNetEvent('esx_drugeffects:onWeed')
+AddEventHandler('esx_drugeffects:onWeed', function()
   
-  Citizen.CreateThread(function()
-
-    local playerPed = GetPlayerPed(-1)
-
-    if start then
-     Wait(800)
-    end
-
-    if level == 0 then
-      RequestAnimSet("move_p_m_zero_slow") 
+  local playerPed = GetPlayerPed(-1)
+  
+    RequestAnimSet("move_p_m_zero_slow") 
     while not HasAnimSetLoaded("move_p_m_zero_slow") do
       Citizen.Wait(0)
-    end
+    end    
 
-      SetPedMovementClipset(playerPed, "move_p_m_zero_slow", true)
-      SetRunSprintMultiplierForPlayer (playerPed, 1.2)
-	ESX.ShowNotification('Passed the condition weed')
-  
-    elseif level == 1 then
-      RequestAnimSet("move_m@drunk@moderatedrunk")
-    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
-      Citizen.Wait(0)
-    end
-
-      SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-      SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
-      ESX.ShowNotification('Passed the condition opium')
-
-    elseif level == 2 then
-      RequestAnimSet("move_injured_generic")
-    while not HasAnimSetLoaded("move_injured_generic") do
-      Citizen.Wait(0)
-    end
-
-      SetPedMovementClipset(playerPed, "move_injured_generic", true)
-      SetPlayerMeleeWeaponDefenseModifier (playerPed, 2.0) 
-      ESX.ShowNotification('Passed the condition meth')
-
-    elseif level == 3 then
-      RequestAnimSet("move_m@brave")
-    while not HasAnimSetLoaded("mmove_m@brave") do
-      Citizen.Wait(0)
-    end
-
-      SetPedMovementClipset(playerPed, "move_m@brave", true)
-      SetPlayerWeaponDefenseModifier (playerPed, 40)
-      ESX.ShowNotification('Passed the condition coke')
-    end
-
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    SetPedIsDrug(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_p_m_zero_slow", true)
+    SetPedIsDrunk(playerPed, true)
+    SetRunSprintMultiplierForPlayer (playerPed, 1.2)
+    ESX.ShowNotification('Passed the condition weed')
 
-    end)
+end)
 
-end
+RegisterNetEvent('esx_drugeffects:onOpium')
+AddEventHandler('esx_drugeffects:onOpium', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  
+        RequestAnimSet("move_m@drunk@moderatedrunk") 
+    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
+      Citizen.Wait(0)
+    end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
+    SetPedIsDrunk(playerPed, true)
+    SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.2)
+    ESX.ShowNotification('Passed the condition opium')
+
+end)
+
+RegisterNetEvent('esx_drugeffects:onMeth')
+AddEventHandler('esx_drugeffects:onMeth', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  
+        RequestAnimSet("move_injured_generic") 
+    while not HasAnimSetLoaded("move_injured_generic") do
+      Citizen.Wait(0)
+    end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_injured_generic", true)
+    SetPedIsDrunk(playerPed, true)
+    --SetRunSprintMultiplierForPlayer (playerPed, 1.2)
+    ESX.ShowNotification('Passed the condition meth')
+
+end)
+
+RegisterNetEvent('esx_drugeffects:onCoke')
+AddEventHandler('esx_drugeffects:onCoke', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  
+        RequestAnimSet("move_m@brave") 
+    while not HasAnimSetLoaded("move_m@brave") do
+      Citizen.Wait(0)
+    end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_m@brave", true)
+    SetPedIsDrunk(playerPed, true)
+    SetPlayerWeaponDefenseModifier (playerPed, 80)
+    ESX.ShowNotification('Passed the condition coke')
+
+end)
+
 
 --When effects ends go back to normal
 function Normal()
@@ -146,16 +182,18 @@ function Normal()
 
     local playerPed = GetPlayerPed(-1)
 
-   Wait(800)
+    DoScreenFadeOut(800)
+    Wait(1000)
 
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-	
-    
-   end)
+
+    DoScreenFadeIn(800)
+
+  end)
 
 end
 
@@ -178,23 +216,3 @@ Citizen.CreateThread(function()
     	
    end)
 end
-
-RegisterNetEvent('esx_drugseffects:onDrug')
-AddEventHandler('esx_drugseffects:onDrug', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  
-  TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-  Citizen.Wait(2000)
-  ClearPedTasksImmediately(playerPed)
-
-end)
-
-
---SetEntityHealth(playerPed, 200)
---SetRunSprintMultiplierForPlayer (playerPed, 1.0)
-      --SetPlayerMeleeWeaponDefenseModifier (playerPed, 2)
-     --SetPlayerMaxHealthRechargeMultiplier (playerPed, 0.5)
-      --SetPlayerWeaponDefenseModifier (playerPed, 40)
-      --ResetPlayerStamina (playerPed)
---data.current.value == 'opium'
