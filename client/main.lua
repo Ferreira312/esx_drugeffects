@@ -74,107 +74,6 @@ AddEventHandler('esx_status:loaded', function(status)
 
 end)
 
-RegisterNetEvent('esx_drugeffects:onWeed')
-AddEventHandler('esx_drugeffects:onWeed', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  
-    RequestAnimSet("move_p_m_zero_slow") 
-    while not HasAnimSetLoaded("move_p_m_zero_slow") do
-      Citizen.Wait(0)
-    end    
-
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    DoScreenFadeOut(1000)
-    Citizen.Wait(1000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_p_m_zero_slow", true)
-    SetPedIsDrunk(playerPed, true)
-    SetRunSprintMultiplierForPlayer (playerPed, 1.2)
-    ESX.ShowNotification('Passed the condition weed')
-
-end)
-
-RegisterNetEvent('esx_drugeffects:onOpium')
-AddEventHandler('esx_drugeffects:onOpium', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  
-        RequestAnimSet("move_m@drunk@moderatedrunk") 
-    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
-      Citizen.Wait(0)
-    end    
-
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    DoScreenFadeOut(1000)
-    Citizen.Wait(1000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-    SetPedIsDrunk(playerPed, true)
-    SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.2)
-    ESX.ShowNotification('Passed the condition opium')
-
-end)
-
-RegisterNetEvent('esx_drugeffects:onMeth')
-AddEventHandler('esx_drugeffects:onMeth', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  
-        RequestAnimSet("move_injured_generic") 
-    while not HasAnimSetLoaded("move_injured_generic") do
-      Citizen.Wait(0)
-    end    
-
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    DoScreenFadeOut(1000)
-    Citizen.Wait(1000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_injured_generic", true)
-    SetPedIsDrunk(playerPed, true)
-    --SetRunSprintMultiplierForPlayer (playerPed, 1.2)
-    ESX.ShowNotification('Passed the condition meth')
-
-end)
-
-RegisterNetEvent('esx_drugeffects:onCoke')
-AddEventHandler('esx_drugeffects:onCoke', function()
-  
-  local playerPed = GetPlayerPed(-1)
-  
-        RequestAnimSet("move_m@brave") 
-    while not HasAnimSetLoaded("move_m@brave") do
-      Citizen.Wait(0)
-    end    
-
-    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
-    Citizen.Wait(3000)
-    ClearPedTasksImmediately(playerPed)
-    DoScreenFadeOut(1000)
-    Citizen.Wait(1000)
-    ClearPedTasksImmediately(playerPed)
-    SetTimecycleModifier("spectator5")
-    SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_m@brave", true)
-    SetPedIsDrunk(playerPed, true)
-    SetPlayerWeaponDefenseModifier (playerPed, 80)
-    ESX.ShowNotification('Passed the condition coke')
-
-end)
-
-
 --When effects ends go back to normal
 function Normal()
 
@@ -216,3 +115,107 @@ Citizen.CreateThread(function()
     	
    end)
 end
+
+--Effect Weed
+RegisterNetEvent('esx_drugeffects:onWeed')
+AddEventHandler('esx_drugeffects:onWeed', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  
+    RequestAnimSet("move_p_m_zero_slow") 
+    while not HasAnimSetLoaded("move_p_m_zero_slow") do
+      Citizen.Wait(0)
+    end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_p_m_zero_slow", true)
+    SetPedIsDrunk(playerPed, true)
+    SetRunSprintMultiplierForPlayer (playerPed, 1.2)
+    ESX.ShowNotification('Passed the condition weed')
+
+end)
+
+--Effect Opium
+RegisterNetEvent('esx_drugeffects:onOpium')
+AddEventHandler('esx_drugeffects:onOpium', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  
+        RequestAnimSet("move_m@drunk@moderatedrunk") 
+    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
+      Citizen.Wait(0)
+    end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
+    SetPedIsDrunk(playerPed, true)
+    SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.2)
+    ESX.ShowNotification('Passed the condition opium')
+
+end)
+
+--Effect Meth
+RegisterNetEvent('esx_drugeffects:onMeth')
+AddEventHandler('esx_drugeffects:onMeth', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  
+        RequestAnimSet("move_injured_generic") 
+    while not HasAnimSetLoaded("move_injured_generic") do
+      Citizen.Wait(0)
+    end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_injured_generic", true)
+    SetPedIsDrunk(playerPed, true)
+    --SetRunSprintMultiplierForPlayer (playerPed, 1.2)
+    ESX.ShowNotification('Passed the condition meth')
+
+end)
+
+--Effect Coke
+RegisterNetEvent('esx_drugeffects:onCoke')
+AddEventHandler('esx_drugeffects:onCoke', function()
+  
+  local playerPed = GetPlayerPed(-1)
+  
+        RequestAnimSet("move_m@brave") 
+    while not HasAnimSetLoaded("move_m@brave") do
+      Citizen.Wait(0)
+    end    
+
+    TaskStartScenarioInPlace(playerPed, "WORLD_HUMAN_SMOKING_POT", 0, 1)
+    Citizen.Wait(3000)
+    ClearPedTasksImmediately(playerPed)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(playerPed)
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(playerPed, true)
+    SetPedMovementClipset(playerPed, "move_m@brave", true)
+    SetPedIsDrunk(playerPed, true)
+    SetPlayerWeaponDefenseModifier (playerPed, 80)
+    ESX.ShowNotification('Passed the condition coke')
+
+end)
