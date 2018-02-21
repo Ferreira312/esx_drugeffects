@@ -2,6 +2,7 @@
 Modifided version of esx_optionalneeds from @indilo53
 
 [NOT WORKING YET !!!]
+
 [TODO]
 
 -Test the effects
@@ -11,6 +12,7 @@ Modifided version of esx_optionalneeds from @indilo53
 [REQUIREMENTS]
 
 esx_status https://github.com/FXServer-ESX/fxserver-esx_status
+
 esx_drugs https://github.com/ESX-Org/esx_drugs <- Original
 
 Remove lines esx_drugs_cl.lua: 181-207 | esx_drugs_sv.lua: 740-751 
@@ -26,6 +28,7 @@ Add this in your server.cfg :
 ```
 start esx_drugeffects
 ```
+
 [FEATURES]
 
 Adds the option to use drugs that adds effects ex. speed, damage reduction, health recharge.
