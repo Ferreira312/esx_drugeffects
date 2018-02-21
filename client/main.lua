@@ -42,7 +42,7 @@ AddEventHandler('esx_status:loaded', function(status)
 
           local level = 0
 
-          if status.val <= 1000000 then
+          if status.val <= 9999999 then
             level = 0
           else
             overdose()
