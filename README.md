@@ -5,17 +5,17 @@ Modifided version of esx_optionalneeds from @indilo53
 
 [TODO]
 
--Test the effects
+* Test the effects
 
--Test with esx_optionalneeds
+* Test with esx_optionalneeds
 
 [REQUIREMENTS]
 
-*esx_status https://github.com/FXServer-ESX/fxserver-esx_status
+* esx_status https://github.com/FXServer-ESX/fxserver-esx_status
 
-*esx_drugs https://github.com/ESX-Org/esx_drugs <- Original
+* esx_drugs https://github.com/ESX-Org/esx_drugs <- Original
 
-*Remove lines esx_drugs_cl.lua: 181-207 | esx_drugs_sv.lua: 740-751 
+* Remove lines esx_drugs_cl.lua: 181-207 | esx_drugs_sv.lua: 740-751 
 or use my modified version of esx_drugs: https://github.com/Ferreira312/esx_drugs
 
 [INSTALLATION]
