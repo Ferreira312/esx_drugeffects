@@ -1,8 +1,6 @@
 # esx_drugeffects
 Modifided version of esx_optionalneeds from @indilo53
 
-[NOT WORKING YET !!!]
-
 [TODO]
 
 * Test the effects
