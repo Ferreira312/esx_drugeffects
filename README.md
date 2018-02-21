@@ -22,7 +22,9 @@ or use my modified version of esx_drugs: https://github.com/Ferreira312/esx_drug
 
 CD in your resources/[esx] folder
 Clone the repository
+```
 git clone https://github.com/Ferreira312/esx_drugeffects/ esx_drugeffects
+```
 
 Add this in your server.cfg :
 ```
