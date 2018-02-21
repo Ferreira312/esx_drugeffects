@@ -127,8 +127,7 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     SetPedMovementClipset(playerPed, "move_p_m_zero_slow", true)
     SetPedIsDrunk(playerPed, true)
     SetRunSprintMultiplierForPlayer (playerPed, 1.3)
-    ESX.ShowNotification('Passed the condition weed')
-
+    
 end)
 
 --Effect Opium
@@ -150,8 +149,7 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
     SetPedIsDrunk(playerPed, true)
     SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.2)
-    ESX.ShowNotification('Passed the condition opium')
-
+    
 end)
 
 --Effect Meth
@@ -173,8 +171,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     SetPedMovementClipset(playerPed, "move_injured_generic", true)
     SetPedIsDrunk(playerPed, true)
     SetPlayerMeleeWeaponDefenseModifier (playerPed, 60)
-    ESX.ShowNotification('Passed the condition meth')
-
+    
 end)
 
 --Effect Coke
@@ -196,6 +193,5 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     SetPedMovementClipset(playerPed, "move_m@brave", true)
     SetPedIsDrunk(playerPed, true)
     SetPlayerWeaponDefenseModifier (playerPed, 80)
-    ESX.ShowNotification('Passed the condition coke')
-
+    
 end)
