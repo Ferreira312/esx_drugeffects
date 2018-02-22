@@ -11,7 +11,7 @@ end)
 
 AddEventHandler('esx_status:loaded', function(status)
 
-  TriggerEvent('esx_status:registerStatus', 'drug', 0, '#8F15A5', 
+  TriggerEvent('esx_status:registerStatus', 'drug', 0, '#9ec617', 
     function(status)
       if status.val > 0 then
         return true
@@ -94,7 +94,7 @@ end
 --In case too much drugs dies of overdose set everything back
 function overdose()
 
-Citizen.CreateThread(function()
+  Citizen.CreateThread(function()
 
     local playerPed = GetPlayerPed(-1)
 	
@@ -104,18 +104,36 @@ Citizen.CreateThread(function()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-    	
-   end)
+    status.remove(999999) -- Test
+
+  end)
+
 end
 
---Effect Weed
+--take Xanax to end the trip
+RegisterNetEvent('esx_drugeffects:xanax')
+AddEventHandler('esx_drugeffects:xanax', function()
+
+    local playerPed = GetPlayerPed(-1)
+
+    ClearTimecycleModifier()
+    ResetScenarioTypesEnabled()
+    ResetPedMovementClipset(playerPed, 0)
+    SetPedIsDrug(playerPed, false)
+    SetPedMotionBlur(playerPed, false)
+
+end)
+
+--Drugs Effects
+
+--Weed
 RegisterNetEvent('esx_drugeffects:onWeed')
 AddEventHandler('esx_drugeffects:onWeed', function()
   
   local playerPed = GetPlayerPed(-1)
   
-    RequestAnimSet("move_p_m_zero_slow") 
-    while not HasAnimSetLoaded("move_p_m_zero_slow") do
+    RequestAnimSet("move_m@hipster@a") 
+    while not HasAnimSetLoaded("move_m@hipster@a") do
       Citizen.Wait(0)
     end    
 
@@ -124,13 +142,16 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_p_m_zero_slow", true)
+    SetPedMovementClipset(playerPed, "move_m@hipster@a", true)
     SetPedIsDrunk(playerPed, true)
-    SetRunSprintMultiplierForPlayer (playerPed, 1.3)
+    
+    --Efects
+    SetRunSprintMultiplierForPlayer (playerPed, 1.4)
+    SetPlayerMeleeWeaponDefenseModifier (playerPed, 60)
     
 end)
 
---Effect Opium
+--Opium
 RegisterNetEvent('esx_drugeffects:onOpium')
 AddEventHandler('esx_drugeffects:onOpium', function()
   
@@ -148,16 +169,20 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     SetPedMotionBlur(playerPed, true)
     SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
     SetPedIsDrunk(playerPed, true)
-    SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.2)
     
-end)
+    --Efects
+      ResetPlayerStamina(playerPed)
+      SetRunSprintMultiplierForPlayer (playerPed, 1.2)
+      SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.2)
+ end)
 
---Effect Meth
+--Meth
 RegisterNetEvent('esx_drugeffects:onMeth')
 AddEventHandler('esx_drugeffects:onMeth', function()
   
   local playerPed = GetPlayerPed(-1)
-  
+  local maxHealth = GetEntityMaxHealth(playerPed)
+
         RequestAnimSet("move_injured_generic") 
     while not HasAnimSetLoaded("move_injured_generic") do
       Citizen.Wait(0)
@@ -170,18 +195,24 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     SetPedMotionBlur(playerPed, true)
     SetPedMovementClipset(playerPed, "move_injured_generic", true)
     SetPedIsDrunk(playerPed, true)
-    SetPlayerMeleeWeaponDefenseModifier (playerPed, 60)
+    
+   --Efects
+    SetPlayerWeaponDefenseModifier (playerPed, 80)
+    local health = GetEntityHealth(playerPed)
+    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
+    SetEntityHealth(playerPed, newHealth)
     
 end)
 
---Effect Coke
+--Coke
 RegisterNetEvent('esx_drugeffects:onCoke')
 AddEventHandler('esx_drugeffects:onCoke', function()
   
   local playerPed = GetPlayerPed(-1)
-  
-        RequestAnimSet("move_m@brave") 
-    while not HasAnimSetLoaded("move_m@brave") do
+  local maxHealth = GetEntityMaxHealth(playerPed)
+
+        RequestAnimSet("move_m@hurry_butch@a") 
+    while not HasAnimSetLoaded("move_m@hurry_butch@a") do
       Citizen.Wait(0)
     end    
 
@@ -190,8 +221,13 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     ClearPedTasksImmediately(playerPed)
     SetTimecycleModifier("spectator5")
     SetPedMotionBlur(playerPed, true)
-    SetPedMovementClipset(playerPed, "move_m@brave", true)
+    SetPedMovementClipset(playerPed, "move_m@hurry_butch@a", true)
     SetPedIsDrunk(playerPed, true)
-    SetPlayerWeaponDefenseModifier (playerPed, 80)
+    
+    --Efects
+    SetPlayerWeaponDamageModifier (playerPed, 60)
+    local health = GetEntityHealth(playerPed)
+    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
+    SetEntityHealth(playerPed, newHealth)
     
 end)
