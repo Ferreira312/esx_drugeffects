@@ -110,20 +110,6 @@ function overdose()
 
 end
 
---take Xanax to end the trip
-RegisterNetEvent('esx_drugeffects:xanax')
-AddEventHandler('esx_drugeffects:xanax', function()
-
-    local playerPed = GetPlayerPed(-1)
-
-    ClearTimecycleModifier()
-    ResetScenarioTypesEnabled()
-    ResetPedMovementClipset(playerPed, 0)
-    SetPedIsDrug(playerPed, false)
-    SetPedMotionBlur(playerPed, false)
-
-end)
-
 --Drugs Effects
 
 --Weed
