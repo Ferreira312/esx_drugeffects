@@ -23,8 +23,9 @@ or use my modified version of esx_drugs: https://github.com/Ferreira312/esx_drug
 ```
 git clone https://github.com/Ferreira312/esx_drugeffects/ esx_drugeffects
 ```
+3)Import esx_drugeffects.sql in your database
 
-3) Add this in your server.cfg :
+4) Add this in your server.cfg :
 ```
 start esx_drugeffects
 ```
