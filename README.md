@@ -5,8 +5,6 @@ Modifided version of esx_optionalneeds from @indilo53
 
 * Test the effects
 
-* Test with esx_optionalneeds
-
 [REQUIREMENTS]
 
 * esx_status https://github.com/FXServer-ESX/fxserver-esx_status
