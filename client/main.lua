@@ -86,7 +86,12 @@ function Normal()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-
+--test
+    SetRunSprintMultiplierForPlayer (playerPed, 1.0)
+    SetPlayerMeleeWeaponDefenseModifier (playerPed, 1.0)
+    SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.0)
+    SetPlayerWeaponDefenseModifier (playerPed, 1.0)
+    SetPlayerWeaponDamageModifier (playerPed, 1.0)
   end)
 
 end
@@ -104,7 +109,6 @@ function overdose()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-    status.remove(999999) -- Test
 
   end)
 
@@ -132,8 +136,8 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     SetPedIsDrunk(playerPed, true)
     
     --Efects
-    SetRunSprintMultiplierForPlayer (playerPed, 1.4)
-    SetPlayerMeleeWeaponDefenseModifier (playerPed, 60)
+    SetRunSprintMultiplierForPlayer (playerPed, 1.45)
+    SetPlayerMeleeWeaponDefenseModifier (playerPed, 2.0)
     
 end)
 
@@ -157,7 +161,9 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     SetPedIsDrunk(playerPed, true)
     
     --Efects
+      while level == 0 do
       ResetPlayerStamina(playerPed)
+      end		
       SetRunSprintMultiplierForPlayer (playerPed, 1.2)
       SetPlayerMaxHealthRechargeMultiplier (playerPed, 1.2)
  end)
@@ -183,7 +189,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     SetPedIsDrunk(playerPed, true)
     
    --Efects
-    SetPlayerWeaponDefenseModifier (playerPed, 80)
+    SetPlayerWeaponDefenseModifier (playerPed, 2.0)
     local health = GetEntityHealth(playerPed)
     local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
     SetEntityHealth(playerPed, newHealth)
@@ -211,7 +217,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     SetPedIsDrunk(playerPed, true)
     
     --Efects
-    SetPlayerWeaponDamageModifier (playerPed, 60)
+    SetPlayerWeaponDamageModifier (playerPed, 2.0)
     local health = GetEntityHealth(playerPed)
     local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
     SetEntityHealth(playerPed, newHealth)
