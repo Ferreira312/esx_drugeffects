@@ -86,12 +86,12 @@ function Normal()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
---test
-    SetRunSprintMultiplierForPlayer(playerPed, 1.0)
-    SetPlayerMeleeWeaponDefenseModifier(playerPed, 1.0)
-    SetPlayerMaxHealthRechargeMultiplier(playerPed, 1.0)
-    SetPlayerWeaponDefenseModifier(playerPed, 1.0)
-    SetPlayerWeaponDamageModifier(playerPed, 1.0)
+--Reset effects
+    SetRunSprintMultiplierForPlayer(player, 1.0)
+    SetPlayerMeleeWeaponDefenseModifier(player, 1.0)
+    SetPlayerMaxHealthRechargeMultiplier(player, 1.0)
+    SetPlayerWeaponDefenseModifier(player, 1.0)
+    SetPlayerWeaponDamageModifier(player, 1.0)
   end)
 
 end
