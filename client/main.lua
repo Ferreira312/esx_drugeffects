@@ -87,6 +87,7 @@ function Normal()
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
 --Reset effects
+    local player = PlayerId()
     SetRunSprintMultiplierForPlayer(player, 1.0)
     SetPlayerMeleeWeaponDefenseModifier(player, 1.0)
     SetPlayerMaxHealthRechargeMultiplier(player, 1.0)
