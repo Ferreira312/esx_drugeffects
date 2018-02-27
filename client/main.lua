@@ -78,21 +78,22 @@ end)
 function Normal()
 
   Citizen.CreateThread(function()
-    local player = PlayerId()
+    
     local playerPed = GetPlayerPed(-1)
-
---Reset effects     -> Testing
-    SetRunSprintMultiplierForPlayer(player, 0)
-    SetPlayerMeleeWeaponDefenseModifier(player, 0)
-    SetPlayerMaxHealthRechargeMultiplier(player, 0)
-    SetPlayerWeaponDefenseModifier(player, 0)
-    SetPlayerWeaponDamageModifier(player, 0)
 			
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
+			
+--Reset effects     -> Testing
+    local player = PlayerId()
+    SetRunSprintMultiplierForPlayer(player, 0)
+    SetPlayerMeleeWeaponDefenseModifier(player, 0)
+    SetPlayerMaxHealthRechargeMultiplier(player, 0)
+    SetPlayerWeaponDefenseModifier(player, 0)
+    SetPlayerWeaponDamageModifier(player, 0)
 
   end)
 
