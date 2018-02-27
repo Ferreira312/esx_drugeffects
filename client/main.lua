@@ -78,21 +78,22 @@ end)
 function Normal()
 
   Citizen.CreateThread(function()
-
+    local player = PlayerId()
     local playerPed = GetPlayerPed(-1)
 
+--Reset effects     -> Testing
+    SetRunSprintMultiplierForPlayer(player, 0)
+    SetPlayerMeleeWeaponDefenseModifier(player, 0)
+    SetPlayerMaxHealthRechargeMultiplier(player, 0)
+    SetPlayerWeaponDefenseModifier(player, 0)
+    SetPlayerWeaponDamageModifier(player, 0)
+			
     ClearTimecycleModifier()
     ResetScenarioTypesEnabled()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
---Reset effects
-    local player = PlayerId()
-    SetRunSprintMultiplierForPlayer(player, 1.0)
-    SetPlayerMeleeWeaponDefenseModifier(player, 1.0)
-    SetPlayerMaxHealthRechargeMultiplier(player, 1.0)
-    SetPlayerWeaponDefenseModifier(player, 1.0)
-    SetPlayerWeaponDamageModifier(player, 1.0)
+
   end)
 
 end
@@ -138,7 +139,8 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     
     --Efects
     local player = PlayerId()
-    SetRunSprintMultiplierForPlayer(player, 1.4)
+    SetRunSprintMultiplierForPlayer(player, 1.3)
+    SetPlayerMeleeWeaponDamageModifier(player, 2.0)
     SetPlayerMeleeWeaponDefenseModifier(player, 2.0)
     
 end)
@@ -168,7 +170,7 @@ AddEventHandler('esx_drugeffects:onOpium', function()
       RestorePlayerStamina(player, 2.0) -- test
       end		
       SetRunSprintMultiplierForPlayer(player, 1.2)
-      SetPlayerMaxHealthRechargeMultiplier(player, 1.2)
+      SetPlayerHealthRechargeMultiplier(player, 1.4)
  end)
 
 --Meth
@@ -193,7 +195,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     
    --Efects
     local player = PlayerId()
-    SetPlayerWeaponDefenseModifier(player, 2.0)
+    AddArmourToPed(playerPed, 100) -- test
     local health = GetEntityHealth(playerPed)
     local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
     SetEntityHealth(playerPed, newHealth)
@@ -222,7 +224,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     
     --Efects
     local player = PlayerId()
-    SetPlayerWeaponDamageModifier(player, 2.0)
+    SetPlayerWeaponDamageModifier(player, 5.0) --test
     local health = GetEntityHealth(playerPed)
     local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
     SetEntityHealth(playerPed, newHealth)
