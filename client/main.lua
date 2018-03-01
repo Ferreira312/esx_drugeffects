@@ -86,15 +86,6 @@ function Normal()
     ResetPedMovementClipset(playerPed, 0)
     SetPedIsDrug(playerPed, false)
     SetPedMotionBlur(playerPed, false)
-			
---Reset effects     -> Testing
-    local player = PlayerId()
-    SetRunSprintMultiplierForPlayer(player, 0)
-    SetPlayerMeleeWeaponDefenseModifier(player, 0)
-    SetPlayerMaxHealthRechargeMultiplier(player, 0)
-    SetPlayerWeaponDefenseModifier(player, 0)
-    SetPlayerWeaponDamageModifier(player, 0)
-
   end)
 
 end
@@ -141,9 +132,10 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     --Efects
     local player = PlayerId()
     SetRunSprintMultiplierForPlayer(player, 1.3)
-    SetPlayerMeleeWeaponDamageModifier(player, 2.0)
-    SetPlayerMeleeWeaponDefenseModifier(player, 2.0)
-    
+        
+    Wait(120000) --test
+
+    SetRunSprintMultiplierForPlayer(player, 1.0)		
 end)
 
 --Opium
@@ -166,10 +158,15 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     SetPedIsDrunk(playerPed, true)
     
     --Efects
-      local player = PlayerId()
-      RestorePlayerStamina(player, 1.0) -- test
-      SetRunSprintMultiplierForPlayer(player, 1.2)
-      SetPlayerHealthRechargeMultiplier(player, 1.4)
+    local player = PlayerId()
+    RestorePlayerStamina(player, 1.0) -- test
+    SetRunSprintMultiplierForPlayer(player, 1.2)
+    SetSwimMultiplierForPlayer(player, 1.3)
+
+    Wait(120000) -- test
+
+    SetRunSprintMultiplierForPlayer(player, 1.0)
+    SetSwimMultiplierForPlayer(player, 1.0)
  end)
 
 --Meth
@@ -193,8 +190,7 @@ AddEventHandler('esx_drugeffects:onMeth', function()
     SetPedIsDrunk(playerPed, true)
     
    --Efects
-    local player = PlayerId()
-    AddArmourToPed(playerPed, 100) -- test
+    local player = PlayerId()  
     local health = GetEntityHealth(playerPed)
     local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
     SetEntityHealth(playerPed, newHealth)
@@ -223,7 +219,7 @@ AddEventHandler('esx_drugeffects:onCoke', function()
     
     --Efects
     local player = PlayerId()
-    SetPlayerWeaponDamageModifier(player, 5.0) --test
+    AddArmourToPed(playerPed, 100)
     local health = GetEntityHealth(playerPed)
     local newHealth = math.min(maxHealth , math.floor(health + maxHealth/6))
     SetEntityHealth(playerPed, newHealth)
