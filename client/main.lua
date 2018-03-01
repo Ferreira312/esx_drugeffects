@@ -167,9 +167,7 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     
     --Efects
       local player = PlayerId()
-      while level == 0 do
-      RestorePlayerStamina(player, 2.0) -- test
-      end		
+      RestorePlayerStamina(player, 1.0) -- test
       SetRunSprintMultiplierForPlayer(player, 1.2)
       SetPlayerHealthRechargeMultiplier(player, 1.4)
  end)
