@@ -133,7 +133,7 @@ AddEventHandler('esx_drugeffects:onWeed', function()
     local player = PlayerId()
     SetRunSprintMultiplierForPlayer(player, 1.3)
         
-    Wait(120000) --test
+    Wait(300000) --test
 
     SetRunSprintMultiplierForPlayer(player, 1.0)		
 end)
@@ -163,7 +163,7 @@ AddEventHandler('esx_drugeffects:onOpium', function()
     SetRunSprintMultiplierForPlayer(player, 1.2)
     SetSwimMultiplierForPlayer(player, 1.3)
 
-    Wait(120000) -- test
+    Wait(520000) -- test
 
     SetRunSprintMultiplierForPlayer(player, 1.0)
     SetSwimMultiplierForPlayer(player, 1.0)
