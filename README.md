@@ -7,8 +7,7 @@ Modifided version of esx_optionalneeds from @indilo53
 
 * esx_drugs https://github.com/ESX-Org/esx_drugs <- Original
 
-* Remove lines esx_drugs_cl.lua: 181-207 | esx_drugs_sv.lua: 740-751 
-or use my modified version of esx_drugs: https://github.com/Ferreira312/esx_drugs
+* Remove lines esx_drugs_cl.lua and esx_drugs_sv.lua That gives weed efect 
 
 [INSTALLATION]
 
